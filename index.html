@@ -3,259 +3,394 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ประวัติส่วนตัว | ศุภวิชญ์ ไชยานุศักดิ์ (Resume)</title>
+    <title>Apple Style Portfolio</title>
     <style>
+        /* --- Apple Design System Tokens --- */
         :root {
-            --primary: #1e293b;
-            --secondary: #0f172a;
-            --accent: #2563eb;
-            --bg: #f8fafc;
-            --text: #334155;
-            --text-light: #64748b;
+            --canvas: #ffffff;
+            --canvas-parchment: #f5f5f7;
+            --surface-tile-1: #272729;
+            --surface-black: #000000;
+            --ink: #1d1d1f;
+            --body-on-dark: #ffffff;
+            --body-muted: #cccccc;
+            --primary: #0066cc;
+            --primary-on-dark: #2997ff;
+            --hairline: #e0e0e0;
+            --divider-soft: rgba(0, 0, 0, 0.04);
+            --product-shadow: 0px 5px 30px rgba(0, 0, 0, 0.22);
+            --rounded-pill: 9999px;
+            --rounded-lg: 18px;
+            --spacing-section: 80px;
         }
-        
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'SF Pro Display', 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            padding: 2rem 1rem;
+            background-color: var(--canvas);
+            color: var(--ink);
+            line-height: 1.47;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 3rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        /* Global Nav */
+        .global-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 44px;
+            background-color: var(--surface-black);
+            color: var(--body-on-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            font-size: 12px;
+            letter-spacing: -0.12px;
+            z-index: 1000;
         }
 
-        /* Header Section */
-        header {
+        .global-nav a {
+            color: var(--body-on-dark);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .global-nav a:hover {
+            opacity: 1;
+        }
+
+        /* Full-bleed Tile Sections */
+        .tile {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 2rem;
-            margin-bottom: 2rem;
+            padding: var(--spacing-section) 1rem;
+            position: relative;
+            transition: background-color 0.5s ease;
         }
 
-        .profile-img {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            background-color: #cbd5e1;
-            margin-bottom: 1rem;
-            object-fit: cover;
+        .tile-light {
+            background-color: var(--canvas);
+            color: var(--ink);
         }
 
-        header h1 {
-            color: var(--primary);
-            font-size: 2.5rem;
+        .tile-parchment {
+            background-color: var(--canvas-parchment);
+            color: var(--ink);
+        }
+
+        .tile-dark {
+            background-color: var(--surface-tile-1);
+            color: var(--body-on-dark);
+        }
+
+        /* Typography Styles */
+        .tagline {
+            font-size: 21px;
+            font-weight: 600;
+            letter-spacing: 0.231px;
+            margin-bottom: 0.5px;
+            color: #f56300; /* Apple-style subtle intro color or default */
+        }
+
+        h1.display-hero {
+            font-size: 56px;
+            font-weight: 600;
+            line-height: 1.07;
+            letter-spacing: -0.28px;
             margin-bottom: 0.5rem;
         }
 
-        header p.subtitle {
-            color: var(--accent);
-            font-size: 1.2rem;
+        h2.display-title {
+            font-size: 40px;
             font-weight: 600;
+            line-height: 1.10;
+            letter-spacing: -0.2px;
             margin-bottom: 1rem;
         }
 
-        .contact-info {
+        p.lead {
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 1.4;
+            max-width: 680px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .tile-dark p.lead {
+            color: var(--body-muted);
+        }
+
+        /* Buttons & CTAs */
+        .cta-group {
             display: flex;
-            justify-content: center;
             gap: 1.5rem;
-            flex-wrap: wrap;
-            color: var(--text-light);
-            font-size: 0.95rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1.5rem;
         }
 
-        .contact-info a {
-            color: var(--text-light);
+        .btn-pill {
+            display: inline-block;
+            background-color: var(--primary);
+            color: #ffffff;
+            padding: 11px 22px;
+            border-radius: var(--rounded-pill);
+            font-size: 17px;
+            font-weight: 400;
             text-decoration: none;
-            transition: color 0.2s;
+            transition: transform 0.15s ease, background-color 0.2s;
         }
 
-        .contact-info a:hover {
-            color: var(--accent);
+        .btn-pill:active {
+            transform: scale(0.95);
         }
 
-        /* Section Layout */
-        section {
-            margin-bottom: 2.5rem;
-        }
-
-        section h2 {
-            color: var(--secondary);
-            font-size: 1.5rem;
-            border-left: 4px solid var(--accent);
-            padding-left: 0.75rem;
-            margin-bottom: 1.25rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        /* Experience & Education Item */
-        .item {
-            margin-bottom: 1.5rem;
-        }
-
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 0.25rem;
-        }
-
-        .item-title {
-            font-weight: 700;
+        .btn-pill-ghost {
+            background-color: transparent;
             color: var(--primary);
+            border: 1px solid var(--primary);
         }
 
-        .item-company {
+        .tile-dark .btn-pill-ghost {
+            color: var(--primary-on-dark);
+            border-color: var(--primary-on-dark);
+        }
+
+        /* Profile Image with Apple Shadow */
+        .profile-render {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 2rem;
+            box-shadow: var(--product-shadow);
+            transition: transform 0.5s ease;
+        }
+
+        .profile-render:hover {
+            transform: scale(1.03);
+        }
+
+        /* Skills & Content Grids */
+        .content-grid {
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            text-align: left;
+            padding: 0 1rem;
+        }
+
+        .apple-card {
+            background: var(--canvas);
+            border: 1px solid var(--hairline);
+            border-radius: var(--rounded-lg);
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .apple-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .apple-card h3 {
+            font-size: 20px;
             font-weight: 600;
-            color: var(--accent);
+            margin-bottom: 0.75rem;
         }
 
-        .item-date {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-
-        .item ul {
-            padding-left: 1.25rem;
-            margin-top: 0.5rem;
-            color: var(--text);
+        .apple-card p, .apple-card li {
+            font-size: 15px;
+            color: #515154;
+            list-style: none;
+            margin-bottom: 0.5rem;
         }
 
         /* Skills Badges */
-        .skills-grid {
+        .skills-flex {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.75rem;
+            justify-content: center;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
-        .badge {
-            background-color: #eff6ff;
-            color: var(--accent);
-            padding: 0.4rem 0.8rem;
-            border-radius: 6px;
-            font-size: 0.9rem;
+        .skill-chip {
+            background-color: rgba(0, 102, 204, 0.08);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: var(--rounded-pill);
+            font-size: 14px;
             font-weight: 500;
         }
 
-        /* Actions / Buttons */
-        .cta-container {
+        /* Footer */
+        footer {
+            background-color: var(--canvas-parchment);
+            color: #86868b;
             text-align: center;
-            margin-top: 3rem;
+            padding: 3rem 1rem;
+            font-size: 12px;
+            border-top: 1px solid var(--hairline);
         }
 
-        .btn {
-            display: inline-block;
-            background-color: var(--accent);
-            color: white;
-            padding: 0.75rem 2rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.2s;
+        /* Scroll Animation Utility */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        .btn:hover {
-            background-color: #1d4ed8;
-        }
-
-        /* Responsive Layout */
-        @media (max-width: 600px) {
-            .container { padding: 1.5rem; }
-            .item-header { flex-direction: column; }
-            .item-date { margin-top: 0.25rem; }
-            header h1 { font-size: 2rem; }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <!-- สามารถใส่ URL รูปภาพโปรไฟล์ของคุณใน src -->
-        <div style="display:inline-block;"><img src="https://placeholder.com" alt="Profile" class="profile-img"></div>
-        <h1>ศุภวิชญ์ ไชยานุศักดิ์</h1>
-        <p class="subtitle">Full-Stack Web Developer</p>
-        <div class="contact-info">
-            <span>📍 กรุงเทพฯ, ประเทศไทย</span>
-            <span>📞 089-123-4567</span>
-            <span>✉️ <a href="mailto:somchai@email.com">somchai@email.com</a></span>
-            <span>🔗 <a href="https://linkedin.com" target="_blank">LinkedIn</a></span>
-        </div>
-    </header>
+    <!-- Global Nav -->
+    <nav class="global-nav">
+        <a href="#hero"> Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+    </nav>
 
-    <section id="about">
-        <h2>เกี่ยวกับฉัน</h2>
-        <p>นักพัฒนาเว็บไซต์ที่มีความกระตือรือร้นและประสบการณ์กว่า 3 ปีในการสร้างสรรค์ Web Application ที่ใช้งานง่าย มีความเชี่ยวชาญด้านการเขียนโค้ดที่สะอาด (Clean Code) และการปรับแต่งประสิทธิภาพของระบบหน้าบ้าน (Frontend Optimization)</p>
-    </section>
-
-    <section id="experience">
-        <h2>ประสบการณ์การทำงาน</h2>
-        
-        <div class="item">
-            <div class="item-header">
-                <span class="item-title">Senior Web Developer — <span class="item-company">Tech Innovation Co.</span></span>
-                <span class="item-date">2024 - ปัจจุบัน</span>
+    <!-- Section 1: Hero (Light Tile) -->
+    <section id="hero" class="tile tile-light">
+        <div class="reveal">
+            <p class="tagline">Introducing Portfolio Pro</p>
+            <h1 class="display-hero">คิดต่างอย่างมีสไตล์.</h1>
+            <p class="lead">พื้นที่แสดงผลงานที่ออกแบบด้วยปรัชญาความเรียบง่าย เน้นความงามของเนื้อหาและประสบการณ์ใช้งานที่ลื่นไหลราวกับอยู่ใน Apple Store</p>
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Profile" class="profile-render">
+            <div class="cta-group">
+                <a href="#experience" class="btn-pill">ดูผลงาน</a>
+                <a href="#contact" class="btn-pill btn-pill-ghost">ติดต่อเรา &rarr;</a>
             </div>
-            <ul>
-                <li>นำทีมพัฒนาโปรเจกต์ E-commerce ด้วย React และ Node.js เพิ่มยอดผู้ใช้งานขึ้น 40%</li>
-                <li>ออกแบบโครงสร้างฐานข้อมูลใหม่ ช่วยลดเวลาโหลดของหน้าเว็บลง 1.5 วินาที</li>
-            </ul>
         </div>
+    </section>
 
-        <div class="item">
-            <div class="item-header">
-                <span class="item-title">Junior Developer — <span class="item-company">Digital Solutions Agency</span></span>
-                <span class="item-date">2022 - 2024</span>
+    <!-- Section 2: About (Parchment Tile) -->
+    <section id="about" class="tile tile-parchment">
+        <div class="reveal">
+            <h2 class="display-title">เกี่ยวกับฉัน</h2>
+            <p class="lead">เราเชื่อว่าการออกแบบที่ดีต้องเรียบง่ายแต่ทรงพลัง ทุกรายละเอียดถูกคิดค้นมาเพื่อให้ผู้ใช้งานได้รับประสบการณ์ที่ดีที่สุด ปราศจากความรกตา</p>
+            
+            <div class="content-grid" style="margin-top: 2rem;">
+                <div class="apple-card">
+                    <h3>Vision</h3>
+                    <p>สร้างสรรค์ผลิตภัณฑ์และเว็บไซต์ที่ผสมผสานระหว่างเทคโนโลยีและความงามเข้าไว้ด้วยกันอย่างลงตัว</p>
+                </div>
+                <div class="apple-card">
+                    <h3>Experience</h3>
+                    <p>มีประสบการณ์ในการพัฒนาเว็บและออกแบบ UI/UX ที่เน้นความสะอาดตา โหลดไว และตอบโจทย์ผู้ใช้งานสูงสุด</p>
+                </div>
             </div>
-            <ul>
-                <li>พัฒนาและดูแลรักษาเว็บไซต์ของลูกค้ามากกว่า 15 เว็บไซต์ โดยใช้ WordPress และ HTML/CSS</li>
-                <li>ประสานงานกับทีมผู้พิจารณาออกแบบ (UI/UX) เพื่อเปลี่ยนดีไซน์ให้กลายเป็นโค้ดที่ใช้งานได้จริง</li>
-            </ul>
         </div>
     </section>
 
-    <section id="skills">
-        <h2>ทักษะความชำนาญ</h2>
-        <div class="skills-grid">
-            <span class="badge">HTML5 / CSS3</span>
-            <span class="badge">JavaScript (ES6+)</span>
-            <span class="badge">React.js</span>
-            <span class="badge">Node.js</span>
-            <span class="badge">SQL / MongoDB</span>
-            <span class="badge">Git & GitHub</span>
-            <span class="badge">Responsive Design</span>
-        </div>
-    </section>
+    <!-- Section 3: Experience (Dark Tile) -->
+    <section id="experience" class="tile tile-dark">
+        <div class="reveal">
+            <h2 class="display-title" style="color: #fff;">ประสบการณ์ทำงาน</h2>
+            <p class="lead">เส้นทางและการเติบโตในสายงานอาชีพ</p>
 
-    <section id="education">
-        <h2>ประวัติการศึกษา</h2>
-        <div class="item">
-            <div class="item-header">
-                <span class="item-title">วิทยาศาสตรบัณฑิต (วิทยาการคอมพิวเตอร์)</span>
-                <span class="item-date">2018 - 2022</span>
+            <div class="content-grid" style="margin-top: 2rem;">
+                <div class="apple-card" style="background: #323236; border-color: #424245;">
+                    <h3 style="color: #fff;">Senior UI/UX Designer</h3>
+                    <p style="color: #999;">Apple Inspired Inc. • 2023 - Present</p>
+                    <p style="color: #ccc; margin-top: 1rem;">ออกแบบระบบ Design System และหน้าเว็บไซต์หลักด้วยความใส่ใจในทุกๆ พิกเซลและช่องไฟ</p>
+                </div>
+                <div class="apple-card" style="background: #323236; border-color: #424245;">
+                    <h3 style="color: #fff;">Frontend Developer</h3>
+                    <p style="color: #999;">Creative Studio • 2021 - 2023</p>
+                    <p style="color: #ccc; margin-top: 1rem;">พัฒนาเว็บแอปพลิเคชันที่มีประสิทธิภาพสูง รองรับการแสดงผลทุกหน้าจออย่างสมบูรณ์แบบ</p>
+                </div>
             </div>
-            <p style="color: var(--text-light);">มหาวิทยาลัยนวัตกรรมเทคโนโลยี</p>
         </div>
     </section>
 
-    <div class="cta-container">
-        <!-- ใส่ลิงก์สำหรับดาวน์โหลดไฟล์ PDF เรซูเม่ฉบับเต็มของคุณที่นี่ -->
-        <a href="#" class="btn">⬇️ ดาวน์โหลดเรซูเม่ฉบับ PDF</a>
-    </div>
-</div>
+    <!-- Section 4: Skills (Light Tile) -->
+    <section id="skills" class="tile tile-light">
+        <div class="reveal">
+            <h2 class="display-title">ทักษะและความเชี่ยวชาญ</h2>
+            <p class="lead">เครื่องมือและเทคโนโลยีที่เราเลือกใช้เพื่อสร้างสรรค์ผลงานระดับพรีเมียม</p>
+            
+            <div class="skills-flex" style="margin-top: 2.5rem;">
+                <span class="skill-chip">UI/UX Design</span>
+                <span class="skill-chip">HTML5 & CSS3</span>
+                <span class="skill-chip">JavaScript (ES6+)</span>
+                <span class="skill-chip">React / Next.js</span>
+                <span class="skill-chip">Design Systems</span>
+                <span class="skill-chip">Responsive Web</span>
+                <span class="skill-chip">Tailwind CSS</span>
+                <span class="skill-chip">Git & GitHub</span>
+            </div>
+        </div>
+    </section>
 
+    <!-- Section 5: Contact (Dark Tile) -->
+    <section id="contact" class="tile tile-dark">
+        <div class="reveal">
+            <h2 class="display-title" style="color: #fff;">เริ่มต้นสร้างโปรเจกต์ของคุณ</h2>
+            <p class="lead">พร้อมที่จะร่วมงานหรือพูดคุยกันแล้วใช่ไหม? ติดต่อเราได้เลยตอนนี้</p>
+            <div class="cta-group" style="margin-top: 2rem;">
+                <a href="mailto:example@email.com" class="btn-pill">ส่งข้อความหาเรา</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Copyright © 2026 Apple Inspired Portfolio. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">ออกแบบด้วยความเรียบง่ายตามแนวทาง Apple Design Guidelines</p>
+    </footer>
+
+    <!-- JavaScript สำหรับเอฟเฟกต์เลื่อนแล้วค่อยๆ แสดง (Scroll Reveal) -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const reveals = document.querySelectorAll(".reveal");
+
+            function revealOnScroll() {
+                const windowHeight = window.innerHeight;
+                const revealPoint = 150;
+
+                reveals.forEach(element => {
+                    const revealTop = element.getBoundingClientRect().top;
+                    if (revealTop < windowHeight - revealPoint) {
+                        element.classList.add("active");
+                    }
+                });
+            }
+
+            window.addEventListener("scroll", revealOnScroll);
+            revealOnScroll(); // Trigger initial check
+        });
+    </script>
 </body>
 </html>
